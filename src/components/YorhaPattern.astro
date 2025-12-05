@@ -1,0 +1,57 @@
+---
+// src/components/YorhaPattern.astro
+// Este componente renderiza la barra decorativa estilo Nier
+---
+
+<div class="pattern">
+  <div class="container">
+    <div class="pattern-inner"></div>
+  </div>
+</div>
+
+<style>
+  /* Usamos la variable global que definimos antes */
+  .pattern {
+    /* Color de los bordes principales */
+    border-top: 2px solid var(--pattern-color);
+    border-bottom: 2px solid var(--pattern-color);
+    margin: 1rem 0;
+    width: 100%;
+    opacity: 0.6; /* Un poco más sutil */
+  }
+
+  .pattern-inner {
+    height: 40px;
+    background-size: 50px 3px, 
+      50px 1px, 50px 1px, 50px 1px, 50px 1px,
+      50px 1px, 50px 1px, 50px 1px, 50px 1px;
+    background-position: 0 0, 
+      22px 4px, 22px 5px, 22px 6px, 22px 7px,
+      28px 12px, 28px 13px, 28px 14px, 28px 15px;
+    
+    /* He reemplazado los colores fijos por var(--pattern-color) */
+    background-image: 
+      linear-gradient(90deg, var(--pattern-color), var(--pattern-color) 10px, transparent 10px),
+      
+      linear-gradient(90deg, 
+        rgba(150, 150, 150, .4), rgba(150, 150, 150, .4) 1px, 
+        rgba(150, 150, 150, .8) 1px, rgba(150, 150, 150, .8) 2px, 
+        rgba(150, 150, 150, .9) 2px, rgba(150, 150, 150, .9) 3px, 
+        rgba(150, 150, 150, .4) 3px, rgba(150, 150, 150, .4) 4px, 
+        transparent 4px, transparent 12px,
+        rgba(150, 150, 150, .4) 12px, rgba(150, 150, 150, .4) 13px,
+        rgba(150, 150, 150, .8) 13px, rgba(150, 150, 150, .8) 14px, 
+        rgba(150, 150, 150, .9) 14px, rgba(150, 150, 150, .9) 15px, 
+        rgba(150, 150, 150, .4) 15px, rgba(150, 150, 150, .4) 16px,
+        transparent 16px),
+
+      linear-gradient(90deg, 
+        rgba(150, 150, 150, .4), rgba(150, 150, 150, .4) 1px, 
+        rgba(150, 150, 150, .8) 1px, rgba(150, 150, 150, .8) 2px, 
+        rgba(150, 150, 150, .9) 2px, rgba(150, 150, 150, .9) 3px, 
+        rgba(150, 150, 150, .4) 3px, rgba(150, 150, 150, .4) 4px, 
+        transparent 4px);
+      
+    background-repeat: repeat-x;
+  }
+</style>
