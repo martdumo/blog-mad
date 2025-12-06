@@ -50,7 +50,8 @@ import YorhaPattern from './YorhaPattern.astro';
 		margin: 0;
 		padding: 0 1em;
 		background: transparent;
-		box-shadow: 0 2px 8px rgba(var(--black), 5%);
+		/* Usamos box-shadow oscura definida globalmente o una sutil local */
+		box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 	}
 	h2 {
 		margin: 0;
@@ -60,6 +61,7 @@ import YorhaPattern from './YorhaPattern.astro';
 	h2 a,
 	h2 a.active {
 		text-decoration: none;
+        color: var(--text-color); /* CORREGIDO */
 	}
 	nav {
 		display: flex;
@@ -68,18 +70,23 @@ import YorhaPattern from './YorhaPattern.astro';
 	}
 	nav a {
 		padding: 1em 0.5em;
-		color: var(--black);
+		color: var(--text-color); /* CORREGIDO: Usar var(--text-color) en vez de var(--black) */
 		border-bottom: 4px solid transparent;
 		text-decoration: none;
 	}
 	nav a.active {
 		text-decoration: none;
-		border-bottom-color: var(--accent);
+		border-bottom-color: var(--pattern-color); /* CORREGIDO: Usar var(--pattern-color) o var(--accent-color) */
+        color: #fff; /* Blanco para destacar el activo */
 	}
 	.social-links,
 	.social-links a {
 		display: flex;
+        color: var(--text-color); /* Asegurar que los iconos tengan color correcto */
 	}
+    .social-links a:hover {
+        color: #fff;
+    }
 	@media (max-width: 720px) {
 		.social-links {
 			display: none;
