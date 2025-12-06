@@ -1,0 +1,20 @@
+{
+  "cloudName": "dnzj9gqdt",
+  "uploadPreset": "yhd9foqe",
+  "folder": "",
+  "f_auto": false,
+  "transformParams": "",
+  "dropUpload": true,
+  "clipboardUpload": true,
+  "imageUpload": true,
+  "audioUpload": false,
+  "videoUpload": false,
+  "rawUpload": false,
+  "imageSubfolder": "",
+  "audioSubfolder": "",
+  "videoSubfolder": "",
+  "rawSubfolder": "",
+  "preserveBackupFilePath": false,
+  "backupFolder": "",
+  "ignoreWarnings": false
+}
