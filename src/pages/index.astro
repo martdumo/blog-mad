@@ -1,8 +1,16 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Footer from '../components/Footer.astro';
+import YorhaPattern from '../components/YorhaPattern.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+
+// Obtenemos los últimos 3 posts
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+).slice(0, 3);
 ---
 
 <!doctype html>
@@ -12,38 +20,129 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		
+        <!-- Decoración Superior -->
+        <YorhaPattern />
+
+		<main class="container">
+            <!-- Sección de Bienvenida -->
+            <section class="intro-terminal">
+                <h1>SYSTEM STATUS: <span class="online">ONLINE</span></h1>
+                <p class="typing-effect">
+                    Welcome to the Bunker, unit. <br>
+                    Data archives are accessible. Proceed with caution.
+                </p>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- Sección de Últimos Reportes (Posts) -->
+            <section class="latest-reports">
+                <h3>> LATEST_REPORTS</h3>
+                <ul class="post-list">
+                    {
+                        posts.map((post) => (
+                            <li>
+                                <a href={`/blog/${post.slug}/`}>
+                                    <span class="report-date">[<FormattedDate date={post.data.pubDate} />]</span>
+                                    <span class="report-title">{post.data.title}</span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+                <div class="more-link">
+                    <a href="/blog">>> ACCESS_FULL_ARCHIVE</a>
+                </div>
+            </section>
 		</main>
+
+        <YorhaPattern />
 		<Footer />
 	</body>
 </html>
+
+<style>
+    /* Estilos específicos para la Home */
+    .intro-terminal {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border: 1px solid var(--accent-color);
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .online {
+        color: #a8c4a0; /* Verde pálido terminal */
+        font-weight: bold;
+        animation: blink 2s infinite;
+    }
+
+    .divider {
+        height: 1px;
+        background: var(--pattern-color);
+        margin: 2rem 0;
+        opacity: 0.5;
+    }
+
+    .latest-reports h3 {
+        margin-bottom: 1.5rem;
+        font-size: 1.2rem;
+        opacity: 0.8;
+    }
+
+    .post-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .post-list li {
+        margin-bottom: 1rem;
+        transition: transform 0.2s;
+    }
+
+    .post-list li:hover {
+        transform: translateX(10px); /* Efecto de desplazamiento al hover */
+    }
+
+    .post-list a {
+        display: flex;
+        flex-direction: column; /* En móvil se ve mejor en columna */
+        border: none;
+    }
+
+    @media (min-width: 600px) {
+        .post-list a {
+            flex-direction: row;
+            gap: 1rem;
+        }
+    }
+
+    .report-date {
+        font-family: monospace;
+        color: var(--accent-color);
+        min-width: 120px;
+    }
+
+    .report-title {
+        font-weight: 500;
+        text-transform: uppercase;
+    }
+
+    .more-link {
+        margin-top: 2rem;
+        text-align: right;
+        font-family: monospace;
+    }
+
+    @keyframes blink {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
