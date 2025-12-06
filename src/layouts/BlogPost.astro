@@ -1,10 +1,10 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import YorhaPattern from '../components/YorhaPattern.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
@@ -14,54 +14,16 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 <html lang="en">
 	<head>
 		<BaseHead title={title} description={description} />
-		<style>
-			main {
-				width: calc(100% - 2em);
-				max-width: 100%;
-				margin: 0;
-			}
-			.hero-image {
-				width: 100%;
-			}
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-				box-shadow: var(--box-shadow);
-			}
-			.prose {
-				width: 720px;
-				max-width: calc(100% - 2em);
-				margin: auto;
-				padding: 1em;
-				color: rgb(var(--gray-dark));
-			}
-			.title {
-				margin-bottom: 1em;
-				padding: 1em 0;
-				text-align: center;
-				line-height: 1;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-			}
-			.date {
-				margin-bottom: 0.5em;
-				color: rgb(var(--gray));
-			}
-			.last-updated-on {
-				font-style: italic;
-			}
-		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main>
-			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
+		
+        <!-- Barra decorativa superior -->
+        <YorhaPattern />
+
+		<main class="container">
+			<article class="content-decoration">
 				<div class="prose">
 					<div class="title">
 						<div class="date">
@@ -77,10 +39,59 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 						<h1>{title}</h1>
 						<hr />
 					</div>
+                    
+                    <!-- Aquí se renderiza el contenido de tu Markdown (texto e imágenes) -->
 					<slot />
 				</div>
 			</article>
 		</main>
+        
+        <!-- Barra decorativa inferior -->
+        <YorhaPattern />
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+    /* Estilos del encabezado del artículo */
+	.title {
+		margin-bottom: 1em;
+		padding: 1em 0;
+		text-align: center;
+		line-height: 1;
+	}
+	.title h1 {
+		margin: 0 0 0.5em 0;
+	}
+	.date {
+		margin-bottom: 0.5em;
+		color: var(--accent-color);
+        font-family: monospace;
+	}
+	.last-updated-on {
+		font-style: italic;
+	}
+
+    /* --- ESTILO DE IMÁGENES (VITAMINA CLOUDINARY) --- */
+    /* Esto hace que las imágenes dentro del post se vean con borde y sombra */
+    .prose :global(img) {
+        border: 1px solid var(--accent-color);
+        padding: 5px;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.5);
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 2rem auto;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+    }
+
+    .prose :global(img:hover) {
+        opacity: 1;
+        border-color: #fff;
+        box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.7);
+        transform: translateY(-2px);
+    }
+</style>
