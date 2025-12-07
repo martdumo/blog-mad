@@ -7,7 +7,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
-// Obtenemos los últimos 3 posts
+// 👇 IMPORTACIÓN NUEVA: Traemos el contenido de tu mapa manual
+import { Content as BunkerMapContent } from '../components/BunkerMap.md';
+
+// Obtenemos los últimos 3 posts (Lógica original intacta)
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
@@ -21,11 +24,10 @@ const posts = (await getCollection('blog')).sort(
 	<body>
 		<Header />
 		
-        <!-- Decoración Superior -->
         <YorhaPattern />
 
 		<main class="container">
-            <!-- Sección de Bienvenida -->
+            <!-- 1. Sección de Bienvenida -->
             <section class="intro-terminal">
                 <h1>SYSTEM STATUS: <span class="online">ONLINE</span></h1>
                 <p class="typing-effect">
@@ -36,7 +38,7 @@ const posts = (await getCollection('blog')).sort(
 
             <div class="divider"></div>
 
-            <!-- Sección de Últimos Reportes (Posts) -->
+            <!-- 2. Sección de Últimos Reportes (Automática) -->
             <section class="latest-reports">
                 <h3>> LATEST_REPORTS</h3>
                 <ul class="post-list">
@@ -52,9 +54,21 @@ const posts = (await getCollection('blog')).sort(
                     }
                 </ul>
                 <div class="more-link">
-                    <a href="/blog">>> ACCESS_FULL_ARCHIVE</a>
+                    <a href="/blog">>> ACCESS_FULL_LOGS</a>
                 </div>
             </section>
+
+            <div class="divider"></div>
+
+            <!-- 3. NUEVA SECCIÓN: Mapa del Bunker (Manual) -->
+            <section class="bunker-map-container">
+                <h3>> BUNKER_SITE_MAP</h3>
+                <div class="manual-markdown-content">
+                    <!-- Aquí se renderiza lo que escribas en BunkerMap.md -->
+                    <BunkerMapContent />
+                </div>
+            </section>
+
 		</main>
 
         <YorhaPattern />
@@ -63,86 +77,111 @@ const posts = (await getCollection('blog')).sort(
 </html>
 
 <style>
-    /* Estilos específicos para la Home */
+    /* --- Estilos Originales (Terminal & Header) --- */
     .intro-terminal {
         margin-bottom: 3rem;
         padding: 2rem;
         border: 1px solid var(--accent-color);
-        background: rgba(0, 0, 0, 0.2);
+        background: rgba(77, 73, 62, 0.05);
     }
 
-    h1 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-    }
-
-    .online {
-        color: #a8c4a0; /* Verde pálido terminal */
-        font-weight: bold;
-        animation: blink 2s infinite;
-    }
-
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; }
+    .online { color: #5b8c5a; font-weight: bold; animation: blink 2s infinite; }
+    
     .divider {
-        height: 1px;
-        background: var(--pattern-color);
-        margin: 2rem 0;
-        opacity: 0.5;
+        height: 1px; background: var(--accent-color); margin: 3rem 0; opacity: 0.3; width: 100%;
     }
 
-    .latest-reports h3 {
-        margin-bottom: 1.5rem;
-        font-size: 1.2rem;
-        opacity: 0.8;
+    /* Títulos Generales */
+    h3 {
+        margin-bottom: 1.5rem; font-size: 1.2rem; opacity: 0.8; font-family: monospace;
+        border-bottom: 2px solid var(--accent-color); display: inline-block; padding-right: 1rem;
     }
 
-    .post-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-
-    .post-list li {
-        margin-bottom: 1rem;
-        transition: transform 0.2s;
-    }
-
-    .post-list li:hover {
-        transform: translateX(10px); /* Efecto de desplazamiento al hover */
-    }
-
+    /* Lista Automática (Arriba) */
+    .post-list { list-style: none; padding: 0; margin: 0; }
+    .post-list li { margin-bottom: 1rem; }
     .post-list a {
-        display: flex;
-        flex-direction: column; /* En móvil se ve mejor en columna */
-        border: none;
+        display: flex; flex-direction: column; border: none; padding: 0.5rem;
+        transition: background-color 0.2s; text-decoration: none; color: var(--text-color);
+    }
+    .post-list a:hover { background-color: rgba(77, 73, 62, 0.1); }
+    @media (min-width: 600px) { .post-list a { flex-direction: row; gap: 1rem; } }
+    .report-date { font-family: monospace; color: var(--accent-color); min-width: 130px; }
+    .report-title { font-weight: 500; text-transform: uppercase; }
+    .more-link { margin-top: 1rem; text-align: right; font-family: monospace; font-size: 0.9rem; }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* --- 🛠️ CORRECCIÓN: ESTILOS DEL MAPA MANUAL --- */
+    
+    .manual-markdown-content {
+        padding-left: 1rem;
+        border-left: 2px solid rgba(77, 73, 62, 0.2);
     }
 
-    @media (min-width: 600px) {
-        .post-list a {
-            flex-direction: row;
-            gap: 1rem;
-        }
-    }
-
-    .report-date {
-        font-family: monospace;
-        color: var(--accent-color);
-        min-width: 120px;
-    }
-
-    .report-title {
-        font-weight: 500;
+    /* Títulos H2 dentro del Markdown (ej: ACCESS_LEVEL_1) */
+    .manual-markdown-content :global(h2) {
+        font-size: 1rem;
         text-transform: uppercase;
-    }
-
-    .more-link {
-        margin-top: 2rem;
-        text-align: right;
+        margin-top: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+        background: rgba(0,0,0,0.05); /* Fondo sutil para separar secciones */
+        padding: 0.5rem;
         font-family: monospace;
+        letter-spacing: 0.1rem;
     }
 
-    @keyframes blink {
-        0% { opacity: 1; }
-        50% { opacity: 0; }
-        100% { opacity: 1; }
+    .manual-markdown-content :global(ul) {
+        list-style: none; /* Quitamos los puntos por defecto */
+        padding: 0;
+    }
+
+    .manual-markdown-content :global(li) {
+        margin-bottom: 2rem;
+        position: relative;
+    }
+
+    /* 🔥 AQUÍ ESTÁ EL ARREGLO DE LOS LINKS 🔥 */
+    .manual-markdown-content :global(a) {
+        display: inline-block; /* Importante para que tome el padding */
+        font-weight: 700;
+        font-family: 'Courier New', monospace; /* Fuente técnica */
+        font-size: 1.1rem;
+        color: var(--text-color);
+        text-decoration: underline; /* Subrayado para que SEPA que es un link */
+        text-decoration-thickness: 2px;
+        text-underline-offset: 4px;
+        margin-bottom: 0.5rem;
+        transition: all 0.2s ease;
+        cursor: pointer; /* Fuerza el cursor de manito */
+    }
+
+    /* Efecto Hover: Invertir colores */
+    .manual-markdown-content :global(a:hover) {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        text-decoration: none;
+        padding: 0.2rem 0.5rem;
+        transform: translateX(5px); /* Se mueve un poquito a la derecha */
+    }
+
+    /* Estilo para el texto descriptivo (lo que no es link) */
+    .manual-markdown-content :global(p) {
+        margin: 0;
+        font-size: 0.95rem;
+        opacity: 0.85;
+        line-height: 1.5;
+        padding-left: 0.5rem; /* Indentación visual */
+    }
+    
+    /* Estilo para la "Ruta" simulada en cursiva */
+    .manual-markdown-content :global(em) {
+        font-family: monospace;
+        font-size: 0.8rem;
+        color: var(--accent-color);
+        display: block;
+        margin-bottom: 0.3rem;
+        opacity: 0.6;
     }
 </style>
