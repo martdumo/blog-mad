@@ -3,6 +3,9 @@ title: First post
 description: Lorem ipsum dolor sit amet
 pubDate: Jul 08 2022
 ---
+Resumen: 
+
+
 
 # La Vida como Anomalía Entrópica: El Costo de la Negentropía
 
