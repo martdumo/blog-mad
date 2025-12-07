@@ -7,6 +7,16 @@
     
     <br> Referencia visual para componentes y tipografía.
 
+## Estudio sobre la entropía:
+
+[Entropía_I Introducción](https://blog-mad.pages.dev/blog/entrop%C3%ADa_i/)
+
+
+
+
+
+
+
 ## > ARCHIVE_ACCESS_LEVEL_2
 
 *   **[⚔️ PROYECTO EXTERNO: GitHub](https://github.com/martdumo)**
