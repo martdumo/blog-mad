@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "src/content/blog/Standard ASCII vs. Texture Mode.md",
+                "file": "src/components/BunkerMap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Standard ASCII vs. Texture Mode"
+              "title": "BunkerMap"
             }
           }
         ]
@@ -196,12 +196,17 @@
   },
   "active": "d7c3a07975e76d89",
   "lastOpenFiles": [
+    "blog/first-post.md",
+    "src/components/BunkerMap.md",
+    "blog",
+    "src/components/MapaDelSitio.md",
+    "node_modules/@oslojs/encoding/README.md",
+    "src/content/blog/Standard ASCII vs. Texture Mode.md",
     "src/content/blog/markdown-style-guide.md",
     "src/content/blog/first-post.md",
     "src/content/blog/prueba-obsidian.md",
     "src/content/blog/second-post.md",
     "src/content/blog/third-post.md",
-    "src/content/blog/Standard ASCII vs. Texture Mode.md",
     "src/content/blog/mision-secreta.md.md",
     "Welcome.md"
   ]
