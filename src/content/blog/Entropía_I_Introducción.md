@@ -3,7 +3,17 @@ title: Entropía_I
 description: Introducción sobre que es la entropía
 pubDate: Dec 07 2025
 ---
-
+Resumen:
+La entropía mide el grado de desorden o dispersión de energía en un sistema físico.
+**Menos entropía**: energía concentrada y estructura ordenada (ej: hielo sólido, combustible sin usar).
+**Más entropía**: energía dispersa y caos (ej: vapor, fragmentos de un vaso roto).
+La segunda ley de la termodinámica afirma que la entropía en sistemas aislados siempre aumenta o se mantiene.
+Los procesos naturales (como el derretimiento del hielo) son irreversibles porque incrementan la entropía.
+Un sistema evoluciona espontáneamente hacia estados de mayor entropía sin intervención externa.
+Revertir el desorden (baja entropía) requiere aportar energía (ej: limpiar una habitación desordenada).
+Estadísticamente, la entropía refleja la cantidad de configuraciones microscópicas posibles en un estado macroscópico.
+La energía útil para trabajo disminuye conforme aumenta la entropía (mayor dispersión).
+La entropía define la dirección irreversible del tiempo y los procesos naturales en el universo.
 
 
 

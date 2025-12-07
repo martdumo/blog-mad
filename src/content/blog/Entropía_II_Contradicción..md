@@ -4,7 +4,24 @@ description: Lorem ipsum dolor sit amet
 pubDate: Jul 08 2022
 ---
 Resumen: 
+La Segunda Ley de la Termodinámica dicta que la entropía del universo aislado siempre aumenta , tendencia inexorable hacia el desorden.[dialektika+1](https://en.dialektika.org/science-technology/science/what-is-life-negative-entropy-and-gap-between-physics-biology/)​
 
+Sin embargo, los organismos vivos y la civilización humana exhiben orden estructural extraordinario: genomas precisos, ciudades complejas, información codificada.[wikipedia](https://en.wikipedia.org/wiki/Entropy_and_life)​
+
+Erwin Schrödinger resolvió esta paradoja en _What is Life?_ (1944) introduciendo la **negentropía**: los seres vivos importan orden (energía de baja entropía: alimentos, sol) del ambiente.[areaciencias+1](https://www.areaciencias.com/fisica/neguentropia/)​
+Simultáneamente exportan entropía de alta calidad (calor corporal ~100 W, CO₂, desechos disueltos), manteniendo baja entropía interna localmente.[unse+1](https://www.unse.edu.ar/archivos/Biofsica-Unidad%204%20Termodinmica-calorimetra-versin%201.0.pdf)​
+
+Ilya Prigogine (Nobel 1977) desarrolló la termodinámica de no-equilibrio: organismos son **estructuras disipativas** que generan orden macroscópico mediante disipación eficiente de gradientes energéticos.[wikipedia](https://es.wikipedia.org/wiki/Estructura_disipativa)​youtube​
+
+Ejemplo: celdas de Bénard emergen espontáneamente para acelerar transferencia térmica, produciendo más entropía que procesos conductivos simples.[axonometrica](https://axonometrica.blog/2013/10/14/estructuras-disipativas/)​
+
+**Balance entrópico humano**: Consume 8.4 MJ/día (baja entropía, ~310 K); disipa igual energía como calor infrarrojo (~298 K ambiente). Net: ΔSuniverso≈+1100\Delta S_{\text{universo}} \approx +1100ΔSuniverso≈+1100 J/K-día > 0.[wikipedia](https://es.wikipedia.org/wiki/Tasa_metab%C3%B3lica_basal)​
+
+A escala planetaria, 8×10⁹ humanos + industria fósil (6.7×10¹⁶ J/día) convierten energía solar antigua en radiación IR dispersa, acelerando disipación terrestre.[wikipedia+1](https://es.wikipedia.org/wiki/Equilibrio_t%C3%A9rmico_de_la_Tierra)​
+
+La vida no viola la Segunda Ley: acelera su cumplimiento. Evolución selecciona estructuras que disipan energía más eficientemente mientras mantienen orden local.[scielo](http://www.scielo.org.mx/scielo.php?script=sci_arttext&pid=S1607-050X2008000300005)​
+
+**Conclusión**: La humanidad es la estructura disipativa biosférica máxima, comprando orden local con producción entrópica global acelerada.
 
 
 # La Vida como Anomalía Entrópica: El Costo de la Negentropía
