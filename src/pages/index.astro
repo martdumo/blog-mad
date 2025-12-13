@@ -7,10 +7,11 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 
-// 👇 IMPORTACIÓN NUEVA: Traemos el contenido de tu mapa manual
+// 👇 IMPORTACIONES DE CONTENIDO MANUAL
 import { Content as BunkerMapContent } from '../components/BunkerMap.md';
+import { Content as SupportContent } from '../components/Support.md';
 
-// Obtenemos los últimos 3 posts (Lógica original intacta)
+// Obtenemos los últimos 3 posts
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 ).slice(0, 3);
@@ -38,7 +39,18 @@ const posts = (await getCollection('blog')).sort(
 
             <div class="divider"></div>
 
-            <!-- 2. Sección de Últimos Reportes (Automática) -->
+            <!-- 2. (MOVIDO AQUÍ) MAD-ASCII & DONACIONES -->
+            <section class="support-container">
+                <h3>> SYSTEM_RESOURCES</h3>
+                <!-- Reutilizamos la clase 'manual-markdown-content' -->
+                <div class="manual-markdown-content">
+                    <SupportContent />
+                </div>
+            </section>
+
+            <div class="divider"></div>
+
+            <!-- 3. Sección de Últimos Reportes (Automática) -->
             <section class="latest-reports">
                 <h3>> LATEST_REPORTS</h3>
                 <ul class="post-list">
@@ -60,11 +72,10 @@ const posts = (await getCollection('blog')).sort(
 
             <div class="divider"></div>
 
-            <!-- 3. NUEVA SECCIÓN: Mapa del Bunker (Manual) -->
+            <!-- 4. Mapa del Bunker (Manual) -->
             <section class="bunker-map-container">
                 <h3>> BUNKER_SITE_MAP</h3>
                 <div class="manual-markdown-content">
-                    <!-- Aquí se renderiza lo que escribas en BunkerMap.md -->
                     <BunkerMapContent />
                 </div>
             </section>
@@ -112,70 +123,67 @@ const posts = (await getCollection('blog')).sort(
     .more-link { margin-top: 1rem; text-align: right; font-family: monospace; font-size: 0.9rem; }
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-    /* --- 🛠️ CORRECCIÓN: ESTILOS DEL MAPA MANUAL --- */
+    /* --- ESTILOS DE CONTENIDO MANUAL (Markdown) --- */
     
     .manual-markdown-content {
         padding-left: 1rem;
         border-left: 2px solid rgba(77, 73, 62, 0.2);
     }
 
-    /* Títulos H2 dentro del Markdown (ej: ACCESS_LEVEL_1) */
+    /* Títulos H2 dentro del Markdown */
     .manual-markdown-content :global(h2) {
         font-size: 1rem;
         text-transform: uppercase;
         margin-top: 2.5rem;
         margin-bottom: 1.5rem;
         color: var(--text-color);
-        background: rgba(0,0,0,0.05); /* Fondo sutil para separar secciones */
+        background: rgba(0,0,0,0.05);
         padding: 0.5rem;
         font-family: monospace;
         letter-spacing: 0.1rem;
     }
 
     .manual-markdown-content :global(ul) {
-        list-style: none; /* Quitamos los puntos por defecto */
+        list-style: none; 
         padding: 0;
     }
 
     .manual-markdown-content :global(li) {
-        margin-bottom: 2rem;
+        margin-bottom: 1rem;
         position: relative;
     }
 
-    /* 🔥 AQUÍ ESTÁ EL ARREGLO DE LOS LINKS 🔥 */
+    /* Links dentro del Markdown */
     .manual-markdown-content :global(a) {
-        display: inline-block; /* Importante para que tome el padding */
+        display: inline-block;
         font-weight: 700;
-        font-family: 'Courier New', monospace; /* Fuente técnica */
+        font-family: 'Courier New', monospace;
         font-size: 1.1rem;
         color: var(--text-color);
-        text-decoration: underline; /* Subrayado para que SEPA que es un link */
+        text-decoration: underline;
         text-decoration-thickness: 2px;
         text-underline-offset: 4px;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0.2rem;
         transition: all 0.2s ease;
-        cursor: pointer; /* Fuerza el cursor de manito */
+        cursor: pointer;
     }
 
-    /* Efecto Hover: Invertir colores */
     .manual-markdown-content :global(a:hover) {
         background-color: var(--text-color);
         color: var(--bg-color);
         text-decoration: none;
         padding: 0.2rem 0.5rem;
-        transform: translateX(5px); /* Se mueve un poquito a la derecha */
+        transform: translateX(5px);
     }
 
-    /* Estilo para el texto descriptivo (lo que no es link) */
     .manual-markdown-content :global(p) {
-        margin: 0;
+        margin: 0 0 1rem 0;
         font-size: 0.95rem;
         opacity: 0.85;
         line-height: 1.5;
-        padding-left: 0.5rem; /* Indentación visual */
+        padding-left: 0.5rem;
     }
     
-    /* Estilo para la "Ruta" simulada en cursiva */
     .manual-markdown-content :global(em) {
         font-family: monospace;
         font-size: 0.8rem;
