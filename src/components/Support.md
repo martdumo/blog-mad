@@ -3,7 +3,7 @@
 **Conversor de video a ASCII en tiempo real.**
 
 * [Descargar para Windows (Itch.io)](https://martdumo.itch.io/mad-ascii)
-* [Descarga Directa (.exe)](https://github.com/martdumo/MAD-ASCII_releases/releases/download/v1.0-alpha/MAD-ASCII.exe)
+* [Descarga Directa (.exe)](https://github.com/martdumo/MAD-ASCII_releases/releases/download/alpha/MAD-ASCII_CPU_V_1.14122025.exe)
 
 ## > SUPPLY_DROP / DONATIONS
 
