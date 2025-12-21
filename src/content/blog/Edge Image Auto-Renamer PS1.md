@@ -3,6 +3,18 @@ title: Edge Image Auto-Renamer PS1
 description: Renombra automaticamente los archivos arrastrados a una carpeta que se denominan donwload.jpg
 pubDate: Dec 20 2025
 ---
+# Edge Image Auto-Renamer - Explicación del Script
+
+## Descripción General
+Este script de PowerShell monitorea una carpeta específica y renombra automáticamente las imágenes descargadas desde Microsoft Edge con una marca de tiempo, evitando conflictos de nombres.
+
+## Propósito Principal
+El script resuelve un problema común: cuando Edge descarga imágenes, las guarda como `download.jpg`, `download(1).jpg`, etc. Este script las renombra automáticamente con un formato de fecha y hora para mejor organización.
+
+
+## Primero el SCRIPT luego el Análisis:
+
+
 ```ps1
 #to use from PowerShell :
 
