@@ -5,7 +5,7 @@ pubDate: Dec 20 2025
 ---
 # Edge Image Auto-Renamer - Explicación del Script
 
-## Descripción General
+
 Este script de PowerShell monitorea una carpeta específica y renombra automáticamente las imágenes descargadas desde Microsoft Edge con una marca de tiempo, evitando conflictos de nombres.
 
 ## Propósito Principal
@@ -89,13 +89,6 @@ Register-ObjectEvent $watcher Created -Action {
 while ($true) { Start-Sleep 1 }
 ```
 
-# Edge Image Auto-Renamer - Explicación del Script
-
-## Descripción General
-Este script de PowerShell monitorea una carpeta específica y renombra automáticamente las imágenes descargadas desde Microsoft Edge con una marca de tiempo, evitando conflictos de nombres.
-
-## Propósito Principal
-El script resuelve un problema común: cuando Edge descarga imágenes, las guarda como `download.jpg`, `download(1).jpg`, etc. Este script las renombra automáticamente con un formato de fecha y hora para mejor organización.
 
 ## Estructura del Script
 
@@ -103,7 +96,7 @@ El script resuelve un problema común: cuando Edge descarga imágenes, las guard
 ```powershell
 $folder = "F:\"
 ```
-Define la carpeta a monitorear. En este caso, `F:\`.
+Define la carpeta a monitorear. En este caso, el disco externo `F:\`.
 
 ### 2. Creación del FileSystemWatcher
 ```powershell
